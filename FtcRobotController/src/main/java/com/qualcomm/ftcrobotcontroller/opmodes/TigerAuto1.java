@@ -119,7 +119,7 @@ public class TigerAuto1 extends OpMode{
                 break;
             case MOVE:
                 double motorPower = 0.7;
-                while(this.getTime() < 3000 && controller1.b != ButtonState.PRESSED){
+                while(this.getTime() < 2500 && controller1.b != ButtonState.PRESSED){
                     motorFrontLeft.setPower(motorPower);
                     motorFrontRight.setPower(motorPower);
                     motorRearLeft.setPower(motorPower);
