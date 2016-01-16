@@ -7,6 +7,10 @@ android {
     }
     compileSdkVersion 'Google Inc.:Google APIs:19'
     buildToolsVersion '21.1.2'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 buildscript {
@@ -38,14 +42,14 @@ allprojects {
 
 dependencies {
     compile files('libs/android-support-v4.jar')
-
     //ADDED FOR Controller.java
     compile 'com.google.code.gson:gson:2.3'
-
     compile(name: 'RobotCore-release', ext: 'aar')
     compile(name: 'Hardware-release', ext: 'aar')
     compile(name: 'FtcCommon-release', ext: 'aar')
     compile(name: 'ModernRobotics-release', ext: 'aar')
     compile(name: 'Analytics-release', ext: 'aar')
     compile(name: 'WirelessP2p-release', ext: 'aar')
+    compile project(':ftc-visionlib')
+    compile project(':opencv-java')
 }

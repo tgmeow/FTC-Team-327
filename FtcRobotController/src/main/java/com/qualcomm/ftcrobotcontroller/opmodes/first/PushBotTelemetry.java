@@ -1,9 +1,12 @@
-package com.qualcomm.ftcrobotcontroller.opmodes;
+package com.qualcomm.ftcrobotcontroller.opmodes.first;
 
 //------------------------------------------------------------------------------
 //
 // PushBotTelemetry
 //
+
+import com.qualcomm.ftcrobotcontroller.opmodes.first.PushBotHardware;
+
 /**
  * Provide telemetry provided by the PushBotHardware class.
  *
