@@ -65,6 +65,7 @@ public class FtcOpModeRegister implements OpModeRegister {
         manager.register("TigerOp3", TigerOp3.class);
         manager.register("TigerOp4", TigerOp4.class);
         manager.register("TigerOp5", TigerOp5.class);
+        manager.register("TigerAuto1", TigerAuto1.class);
         manager.register("BasicVisionSample", BasicVisionSample.class);
 
         //manager.register("NullOp", NullOp.class);

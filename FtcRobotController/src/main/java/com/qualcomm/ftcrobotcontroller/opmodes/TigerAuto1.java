@@ -15,7 +15,7 @@ import com.tiger.library.controller.Controller;
  * Basic Autonomous OpMode
  */
 enum State {
-    INITIALIZE, MOVE, CHECK, STOP
+    INITIALIZE, MOVE1, MOVE2, CHECK1, CHECK2, STOP
 
 }
 public class TigerAuto1 extends OpMode{
@@ -105,6 +105,9 @@ public class TigerAuto1 extends OpMode{
         servo1.setDirection(Servo.Direction.FORWARD);
         servo2.setDirection(Servo.Direction.REVERSE);
 
+        servo1.setPosition(servo1Position);
+        servo2.setPosition(servo2Position);
+
         robot_state = State.INITIALIZE;
     }
     public void loop() {
@@ -114,17 +117,47 @@ public class TigerAuto1 extends OpMode{
 
         switch (robot_state) {
             case INITIALIZE:
-                robot_state = State.MOVE;
-                resetTime();
+                robot_state = State.MOVE1;
+                this.resetTime();
                 break;
-            case MOVE:
+            case MOVE1:
                 double motorPower = 0.7;
-                while(this.getTime() < 2500 && controller1.b != ButtonState.PRESSED){
-                    motorFrontLeft.setPower(motorPower);
-                    motorFrontRight.setPower(motorPower);
-                    motorRearLeft.setPower(motorPower);
-                    motorRearRight.setPower(motorPower);
+                motorFrontLeft.setPower(motorPower);
+                motorRearLeft.setPower(motorPower);
+                motorFrontRight.setPower(motorPower);
+                motorRearRight.setPower(motorPower);
+                if(this.getTime() >= 2000 || controller1.b == ButtonState.PRESSED && controller1.b == ButtonState.HELD){
+                    telemetry.addData("Time1", this.getTime());
+                    this.resetTime();
+                    robot_state = State.CHECK1;
                 }
+                break;
+            case CHECK1:
+                motorPower = 0;
+                motorFrontLeft.setPower(motorPower);
+                motorRearLeft.setPower(motorPower);
+                motorFrontRight.setPower(motorPower);
+                motorRearRight.setPower(motorPower);
+                robot_state = State.MOVE2;
+                break;
+            case MOVE2:
+                motorPower = 0.7;
+                motorFrontLeft.setPower(-motorPower);
+                motorRearLeft.setPower(-motorPower);
+                motorFrontRight.setPower(motorPower);
+                motorRearRight.setPower(motorPower);
+                if(this.getTime() >= 1100 || controller1.b == ButtonState.PRESSED || controller1.b == ButtonState.HELD) {
+                    telemetry.addData("Time", this.getTime());
+                    this.resetTime();
+                    robot_state = State.CHECK2;
+                }
+                break;
+            case CHECK2:
+                motorPower = 0;
+                motorFrontLeft.setPower(motorPower);
+                motorRearLeft.setPower(motorPower);
+                motorFrontRight.setPower(motorPower);
+                motorRearRight.setPower(motorPower);
                 robot_state = State.STOP;
                 break;
             case STOP:
