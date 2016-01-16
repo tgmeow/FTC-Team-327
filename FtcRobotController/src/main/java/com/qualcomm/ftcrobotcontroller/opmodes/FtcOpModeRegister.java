@@ -31,6 +31,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
+import com.qualcomm.ftcrobotcontroller.opmodes.first.K9TeleOp;
+import com.qualcomm.ftcrobotcontroller.opmodes.first.MatrixK9TeleOp;
+import com.qualcomm.ftcrobotcontroller.opmodes.first.NullOp;
+import com.qualcomm.ftcrobotcontroller.opmodes.first.PushBotAuto;
+import com.qualcomm.ftcrobotcontroller.opmodes.first.PushBotManual;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 
@@ -54,6 +59,9 @@ public class FtcOpModeRegister implements OpModeRegister {
      *
      * If two or more op modes are registered with the same name, the app will display an error.
      */
+
+    manager.register("TigerOp1", TigerOp1.class);
+    manager.register("TigerOp2", TigerOp2.class);
 
     manager.register("NullOp", NullOp.class);
 

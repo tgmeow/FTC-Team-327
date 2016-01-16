@@ -38,6 +38,10 @@ allprojects {
 
 dependencies {
     compile files('libs/android-support-v4.jar')
+
+    //ADDED FOR Controller.java
+    compile 'com.google.code.gson:gson:2.3'
+
     compile(name: 'RobotCore-release', ext: 'aar')
     compile(name: 'Hardware-release', ext: 'aar')
     compile(name: 'FtcCommon-release', ext: 'aar')
